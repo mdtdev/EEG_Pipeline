@@ -24,7 +24,7 @@ alphaIndex    = find(f>=8 & f<12);
 lowBetaIndex  = find(f>=12 & f<16);
 highBetaIndex = find(f>=16 & f<25);
 gammaIndex    = find(f>=25 & f<40);
-totIndex      = find(f>=6 & f<=40);
+totIndex      = find(f>=4 & f<=40);
 outdata       = [];
 
 med     = median(eeg.raw,2);             % remove median of each sample
@@ -76,7 +76,7 @@ end
 % PLOT
 
 timeRange = 30:2500;
-channel   = 7;
+channel   = 8;
 
 figure;
 plot(eeg.theta(timeRange,1), eeg.theta(timeRange,channel), 'b');
@@ -103,8 +103,8 @@ ylabel('Ratio (Alpha to Theta)');
 % The 256 sample frequency analyses are overlapping.
 
 timeRange = 240:2304;  % Chopped off the first and last minute of recording
-L         = 2;         % L and R electrode numbers
-R         = 15;
+L         = 3;         % L and R electrode numbers
+R         = 14;
 alphaL    = eeg.alpha(timeRange, L);
 alphaR    = eeg.alpha(timeRange, R);
 alphaDiff = alphaR - alphaL;
