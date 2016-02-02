@@ -14,7 +14,8 @@ function AIS = alphaImbalance(eegDataBlob, duration, logbase)
 % natural order used by eeglab!
 %
 % Alpha power is INVERSELY related to cortical activity, so the larger the
-% AIS score, the lower the power.
+% AIS score, the lower the power. HIGHER scores represent GREATER relative
+% LEFT HEMISPHERIC activity.
 %
 % MDT
 % 2016.02.02
