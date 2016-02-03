@@ -46,8 +46,8 @@ function AIS = alphaImbalance(eegDataBlob, duration, logbase)
     % the spectrum is not ever counted double.
     
     thetaIndex    = find(f >=  4 & f <   8);
-    alphaIndex    = find(f >=  8 & f <= 12); % Note new bounds
-    betaIndex     = find(f >  12 & f <  25); % No more high and low beta
+    alphaIndex    = find(f >=  8 & f <= 13); % Note new bounds/H-J 2006 used 13 Hz
+    betaIndex     = find(f >  13 & f <  25); % No more high and low beta as in gmac01
     gammaIndex    = find(f >= 25 & f <= 40);
     totIndex      = find(f >=  4 & f <= 40);
     outdata       = [];
