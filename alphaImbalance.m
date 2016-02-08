@@ -2,13 +2,14 @@ function AIS = alphaImbalance(eegDataBlob, duration, logbase)
 
 % AIS = alphaImbalance(eegDataBlob, duration, logbase)
 %
-% Returns alpha imbalance scores a la Harmon-Jones (2006). Result is a
-% matrix of alpha imblance scores. This function does no cleaning of the
-% data such as removing eye blinks, etc. Also assumes the EEG channels are
-% arranged in EPOC order: channel 1 and 14 are homologous sites, as are 2
-% and 13, 3 and 12, and so on. AIS is arranged as number of differences
-% (channels/2) by Harmon-Jones imbalance scores (1 column). DEFAULTS:
-% duration is 2 (2 seconds) and logbase is set to 10.
+% Returns alpha imbalance scores a la Harmon-Jones (2006; references at
+% bottom). Result is a matrix of alpha imblance scores. This function does
+% no cleaning of the data such as removing eye blinks, etc. Also assumes
+% the EEG channels are arranged in EPOC order: channel 1 and 14 are
+% homologous sites, as are 2 and 13, 3 and 12, and so on. AIS is arranged
+% as number of differences (channels/2) by Harmon-Jones imbalance scores (1
+% column). *DEFAULTS*: duration is 2 (2 seconds) and logbase is set to e =
+% exp(1).
 %
 % Expects the EEG time courses in GMAC order time X channels, not the
 % natural order used by eeglab!
@@ -18,13 +19,13 @@ function AIS = alphaImbalance(eegDataBlob, duration, logbase)
 % LEFT HEMISPHERIC activity.
 %
 % MDT
-% 2016.02.02
-% Version 0.0.1 ALPHA
+% 2016.02.08
+% Version 0.0.2 ALPHA
 
     % SETUP and Defaults
     
     if nargin < 3
-        logbase = 10;
+        logbase = exp(1);   % Switched to e b/c Allen at al (2004; below)
     end
 
     if nargin < 2
@@ -118,3 +119,13 @@ function AIS = alphaImbalance(eegDataBlob, duration, logbase)
     
     AIS = log(rightAlpha)./log(logbase) - log(leftAlpha)./log(logbase);
 end
+
+% REFERENCES:
+%
+% Harmon?Jones, E. (2006). Unilateral right?hand contractions cause
+% contralateral alpha power suppression and approach motivational affective
+% experience. Psychophysiology, 43(6), 598-603.
+%
+% Allen, J. J., Coan, J. A., & Nazarian, M. (2004). Issues and assumptions
+% on the road from raw signals to metrics of frontal EEG asymmetry in
+% emotion. Biological psychology, 67(1), 183-218.
