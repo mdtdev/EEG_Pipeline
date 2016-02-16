@@ -122,7 +122,7 @@ end
 
 % REFERENCES:
 %
-% Harmon?Jones, E. (2006). Unilateral right?hand contractions cause
+% Harmon-Jones, E. (2006). Unilateral right?hand contractions cause
 % contralateral alpha power suppression and approach motivational affective
 % experience. Psychophysiology, 43(6), 598-603.
 %
