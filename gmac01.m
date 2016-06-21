@@ -3,13 +3,13 @@
 % Have not checked to see if this works yet.
 %
 % From: https://emotiv.com/forum/forum4/topic18214/messages/
-%   Posted by: GMAC Administrator @ emotiv
+%   Posted by: GMAC Administrator @ emotiv who is the author.
+%   Not listed as having any copyright, but note sure.
 %
 % Assumes: 128 Hz Sampling Freq; matrix has EEG data only; no data
 % corrections!
 %
-% MDT
-% 2016.01.18
+% Transcribed with minor edits by MDT on 2016.01.18
 
 fftlength  = 256;                      % make the window for sample length fftlength
 hanning    = [1:fftlength]';
@@ -114,10 +114,3 @@ title('Difference alphaR - alphaL, AF4-AF3');
 xlabel('Sample Number (Start of FFT; 32 sample steps)')
 ylabel('Difference in Frontal Alpha');
 refline(0,0);        % Add horizontal line to plot
-
-
-
-
-
-
-
