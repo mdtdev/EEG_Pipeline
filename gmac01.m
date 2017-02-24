@@ -27,30 +27,32 @@ gammaIndex    = find(f>=25 & f<40);
 totIndex      = find(f>=4 & f<=40);
 outdata       = [];
 
-med     = median(eeg.raw,2);             % remove median of each sample
-eeg.raw = eeg.raw - repmat(med, 1, 14);
-
-for j=2:size(eeg.raw,1)                  % limit slew rate
-    del = eeg.raw(j,:) - eeg.raw(j-1,:);
-    del = min(del,  ones(1,14)*15);
-    del = max(del, -ones(1,14)*15);
-    eeg.raw(j,:) = eeg.raw(j-1,:) + del;
-end
-
-% High pass filter section
-
-a = 0.0078125;  % HPF filter coefs
-b = 0.9921875;
-
-preVal   = zeros(1,14);
-eeg.filt = zeros(size(eeg.raw));
-
-for j=2:size(eeg.raw,1)
-    preVal = a * eeg.raw(j,:) + b * preVal;
-    eeg.filt(j,:) = eeg.raw(j,:) - preVal;
-end                                          % end HPF
+% med     = median(eeg.raw,2);             % remove median of each sample
+% eeg.raw = eeg.raw - repmat(med, 1, 14);
+% 
+% for j=2:size(eeg.raw,1)                  % limit slew rate
+%     del = eeg.raw(j,:) - eeg.raw(j-1,:);
+%     del = min(del,  ones(1,14)*15);
+%     del = max(del, -ones(1,14)*15);
+%     eeg.raw(j,:) = eeg.raw(j-1,:) + del;
+% end
+% 
+% % High pass filter section
+% 
+% a = 0.0078125;  % HPF filter coefs
+% b = 0.9921875;
+% 
+% preVal   = zeros(1,14);
+% eeg.filt = zeros(size(eeg.raw));
+% 
+% for j=2:size(eeg.raw,1)
+%     preVal = a * eeg.raw(j,:) + b * preVal;
+%     eeg.filt(j,:) = eeg.raw(j,:) - preVal;
+% end                                          % end HPF
 
 % Add more vectors to the "eeg" data structure!
+
+% Create eeg.filt
 
 eeg.theta    = [];
 eeg.alpha    = [];
